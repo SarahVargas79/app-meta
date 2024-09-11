@@ -4,15 +4,15 @@ isChecked: () => {} - Função
 */
 let meta = {
     value: 'Começar a dormir mais cedo, no mínimo 6 horas por dia.',
-    checked: false,
-    log: (info) => {
-        console.log(info)
-    }
+    checked: true,
 }
 
-meta.value = "Não dormir mais no mínimo 6 horas"
-meta.log(meta.value);
+let metas = [
+    meta,
+    {
+        value: "Estudar 1 hora todos os dias.",
+        checked: false,
+    }
+]
 
-
-// function  // arrow function
-const criarMeta = () => {}
+console.log(metas[1].value)
