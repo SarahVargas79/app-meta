@@ -79,3 +79,6 @@ const criarMeta - () => {} arrow function, sinal diferente, arrow(seta).
 
 - [x] while
 
+# Condicionais
+
+- [x] switch
