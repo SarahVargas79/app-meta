@@ -26,14 +26,14 @@ Apresentar os dados
 
 ## Tipos de Dados:
 
-Strings (textos): "" '' ``
-Number: 2 1.4
-Function
+- [x] Strings (textos): "" '' ``
+- [x] Number: 2 1.4
+- [x] Boolean: true, false
 
 ## Escopo e Variáveis:
 
-Variáveis globais e locais
-Constantes
+- [x] Variáveis globais e locais
+- [x] Constantes
 
 !let - 
 !const -
@@ -44,5 +44,34 @@ console.log(...) {} - Fora Global
 
 ## Operadores
 
-Operadores de atribuição de valor - =
+- [x] Operadores de atribuição de valor =
+- [x] Operador de concatenação +
+
+let meta = { value: '...';} - Objeto, ele sempre tem propriedade e valor, value é o valor de meta.
+
+## Estrutura de dados:
+
+### Arrays:
+
+- [x] Uma lista que contém qualquer tipo de dado, [..., ]
+
+### Objetos:
+
+- [x] Atributos e métodos
+- [x] Criação e manipulação de objetos
+- [x] Acesso a propriedades de objetos
+
+Manipulação - Aterar algo ou somar + mais de alguma coisa! 
+
+. - Acesso a uma propriedade 'dentro'
+
+### Functions
+
+- [x] Criar, passar argumento
+- [x] Executar
+- [x] arrow function / named function
+
+function criarMeta() {}
+
+const criarMeta - () => {} arrow function, sinal diferente, arrow(seta).
 
