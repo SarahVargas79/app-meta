@@ -1,18 +1,9 @@
-/*
-meta - Objeto
-isChecked: () => {} - Função
-*/
-let meta = {
-    value: 'Começar a dormir mais cedo, no mínimo 6 horas por dia.',
-    checked: true,
+const start = () => {
+    let count = 1
+    while (count <= 10) {
+        console.log(count)
+        count = count + 1
+    }
 }
 
-let metas = [
-    meta,
-    {
-        value: "Estudar 1 hora todos os dias.",
-        checked: false,
-    }
-]
-
-console.log(metas[1].value)
+start()

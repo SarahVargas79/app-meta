@@ -75,3 +75,7 @@ function criarMeta() {}
 
 const criarMeta - () => {} arrow function, sinal diferente, arrow(seta).
 
+# Estrutura de repetição
+
+- [x] while
+
