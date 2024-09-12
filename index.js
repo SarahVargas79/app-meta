@@ -66,8 +66,30 @@ const metasRealizadas = async () => {
     }
 
     await select({
-        message: "Metas Realizadas",
+        message: "Metas Realizadas " + realizadas.length,
         choices: [...realizadas] // capta o novo array, o anterior, no caso realizadas é colocado no novo array
+    })
+}
+
+const metasAbertas= async () => {
+    /*
+    se a op. for V a meta esp. entra nas abertas
+
+    tocar [] - alongamento [x], está marc. ñ = falso
+    diferente de true entra como meta aberta.
+    */
+    const abertas = metas.filter((meta) => {
+        return meta.checked != true
+    })
+
+    if (abertas.length == 0) {
+        console.log('Não há metas abertas! :)')
+        return
+    }
+
+    await select({
+        message: "Metas Abertas " + abertas.length,
+        choices: [...abertas] 
     })
 }
 
@@ -96,6 +118,10 @@ const start = async () => {
                     value: "realizadas"
                 },
                 {
+                    name: "Metas abertas",
+                    value: "abertas"
+                },
+                {
                     name: "Logout",
                     value: "logout"
                 }
@@ -112,6 +138,9 @@ const start = async () => {
                 break
             case "realizadas":
                 await metasRealizadas()
+                break
+            case "abertas":
+                await metasAbertas()
                 break
             case "logout":
                 console.log("Até a próxima!")
