@@ -47,6 +47,7 @@ console.log(...) {} - Fora Global
 - [x] Operadores de atribuição de valor: =
 - [x] Operador de concatenação: +
 - [x] Operadores de comparação: == != <= >= < >
+- [x] spread operador: ...
 
 let meta = { value: '...';} - Objeto, ele sempre tem propriedade e valor, value é o valor de meta.
 
@@ -55,6 +56,9 @@ let meta = { value: '...';} - Objeto, ele sempre tem propriedade e valor, value 
 ### Arrays:
 
 - [x] Uma lista que contém qualquer tipo de dado, [..., ]
+- [x] Métodos de array: push, [find, forEach, filter] : HOF (Higher Order Functions)
+
+* array é um objeto no JS
 
 ### Objetos:
 
@@ -97,3 +101,8 @@ const criarMeta - () => {} arrow function, sinal diferente, arrow(seta).
 * Quando há um await, existe a função chamada promises, ela funciona, por exemplo, promises trazer para o usu o menu e ele vai selecionar após recebe na variável const opcao a inform. que o usu selecionou. Tem vários casos de promises.
 
 assícrona - Chego na variável espera para buscar a infor. para continuar o caminho independente do tempo.
+
+
+** JS transforma quase todos os tipos de dados em objeto.
+
+** bugs - Comportamentos inesperados

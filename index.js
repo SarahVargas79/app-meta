@@ -34,11 +34,16 @@ const listarMetas = async () => {
         return
     }
 
+    // Desmarcar meta(s)
+    metas.forEach((m) => {
+        m.checked = false
+    })
 
+    console.log('Meta(s) marcada(s) como concluída(s)')
 
     /*
     Para cada executa a função
-    Lógica de marcar meta
+    Lógica de marcar meta(s)
     */
     respostas.forEach((resposta) => {
         //find - cada uma, no caso metas
@@ -48,12 +53,22 @@ const listarMetas = async () => {
 
         meta.checked = true
     })
+}
 
-    // Desmarcar meta
-    metas.forEach((m) => {
-        m.checked = false
+const metasRealizadas = async () => {
+    const realizadas = metas.filter((meta) => {
+        return meta.checked
     })
-    console.log('Meta(s) marcadas como concluída(s)')
+
+    if (realizadas.length == 0) {
+        console.log('Não há metas realizadas :(')
+        return
+    }
+
+    await select({
+        message: "Metas Realizadas",
+        choices: [...realizadas] // capta o novo array, o anterior, no caso realizadas é colocado no novo array
+    })
 }
 
 // Registra a função, iniciar função, começa a percorrer o while 
@@ -77,6 +92,10 @@ const start = async () => {
                     value: "listar"
                 },
                 {
+                    name: "Metas realizadas",
+                    value: "realizadas"
+                },
+                {
                     name: "Logout",
                     value: "logout"
                 }
@@ -90,6 +109,9 @@ const start = async () => {
                 break
             case "listar":
                 await listarMetas()
+                break
+            case "realizadas":
+                await metasRealizadas()
                 break
             case "logout":
                 console.log("Até a próxima!")
