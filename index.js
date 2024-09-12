@@ -29,15 +29,15 @@ const listarMetas = async () => {
         instructions: false,
     })
 
-    if (respostas.length == 0) {
-        console.log("Nenhuma meta selecionada!")
-        return
-    }
-
     // Desmarcar meta(s)
     metas.forEach((m) => {
         m.checked = false
     })
+
+    if (respostas.length == 0) {
+        console.log("Nenhuma meta selecionada!")
+        return
+    }
 
     console.log('Meta(s) marcada(s) como concluída(s)')
 
