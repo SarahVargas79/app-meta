@@ -1,4 +1,26 @@
-const { select } = require('@inquirer/prompts') // Extraindo uma função ou código...
+const { select, input } = require('@inquirer/prompts') // Extraindo uma função ou código...
+
+let meta = {
+    value: 'Comer ao menos uma fruta diariamante',
+    checked: false,
+}
+
+let metas = [meta]
+
+const cadastrarMeta = async () => {
+    const meta = await input({ message: "Escreva a meta: " })
+
+    /*
+        meta - Que for escrito vai ser colocado na meta
+        lenght - Verifica se tem caractér, número de caractéres
+        */
+    if (meta.lenght == 0) {
+        console.log('A meta não pode ser vazia.')
+        return
+    }
+    // push - Colocar para dentro
+    metas.push({ value: meta, checked: false })
+}
 
 // Registra a função, iniciar função, começa a percorrer o while 
 const start = async () => {
@@ -29,7 +51,8 @@ const start = async () => {
 
         switch (opcao) {
             case "cadastrar":
-                console.log("Cadastro")
+                await cadastrarMeta()
+                console.log(metas)
                 break
             case "listar":
                 console.log("Lista")
