@@ -82,3 +82,16 @@ const criarMeta - () => {} arrow function, sinal diferente, arrow(seta).
 # Condicionais
 
 - [x] switch
+
+## Módulos em Node.js:
+
+- [x] Importação de módulos (require, Common JS)
+- [x] Biblioteca 'inquirer' para criar prompts interativos
+
+## Programação assícrona e Promises:
+
+- [x] Uso de funções assícronas (async/await)
+
+* Quando há um await, existe a função chamada promises, ela funciona, por exemplo, promises trazer para o usu o menu e ele vai selecionar após recebe na variável const opcao a inform. que o usu selecionou. Tem vários casos de promises.
+
+assícrona - Chego na variável espera para buscar a infor. para continuar o caminho independente do tempo.
