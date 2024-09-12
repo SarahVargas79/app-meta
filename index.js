@@ -66,12 +66,12 @@ const metasRealizadas = async () => {
     }
 
     await select({
-        message: "Metas Realizadas " + realizadas.length,
+        message: "Metas Realizadas: " + realizadas.length,
         choices: [...realizadas] // capta o novo array, o anterior, no caso realizadas é colocado no novo array
     })
 }
 
-const metasAbertas= async () => {
+const metasAbertas = async () => {
     /*
     se a op. for V a meta esp. entra nas abertas
 
@@ -88,9 +88,41 @@ const metasAbertas= async () => {
     }
 
     await select({
-        message: "Metas Abertas " + abertas.length,
-        choices: [...abertas] 
+        message: "Metas Abertas: " + abertas.length,
+        choices: [...abertas]
     })
+}
+
+const deletarMetas = async () => {
+
+    // map - Executa a função para cada meta, return o que vai ser modificado. Passa por cada meta devolvendo novo array modificado.
+    const metasDesmarcadas = metas.map((meta) => {
+        return { value: meta.value, checked: false }
+    })
+
+    const itensADeletar = await checkbox({
+        message: "Selecione item para deletar",
+        choices: [...metasDesmarcadas],
+        instructions: false,
+    })
+
+    if (itensADeletar.length == 0) {
+        console.log('Nenhum item selecionado para deletar!')
+        return
+    }
+
+    itensADeletar.forEach((item) => {
+        // só fica na nova lista de metas o que não for marcado, separa o que ñ vai ser deletado dos que vão ser deletados
+        metas = metas.filter((meta) => {
+            /* 
+            Tocar == Tocar (V) deleta da lista.
+            Tocar == Fazer (N) é != mantém na lista
+            */
+            return meta.value != item
+        })
+    })
+
+    console.log("Meta(s) deleta(s) com sucesso!")
 }
 
 // Registra a função, iniciar função, começa a percorrer o while 
@@ -122,6 +154,10 @@ const start = async () => {
                     value: "abertas"
                 },
                 {
+                    name: "Deletar metas",
+                    value: "deletar"
+                },
+                {
                     name: "Logout",
                     value: "logout"
                 }
@@ -141,6 +177,9 @@ const start = async () => {
                 break
             case "abertas":
                 await metasAbertas()
+                break
+            case "deletar":
+                await deletarMetas()
                 break
             case "logout":
                 console.log("Até a próxima!")
