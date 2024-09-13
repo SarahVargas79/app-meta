@@ -56,7 +56,7 @@ let meta = { value: '...';} - Objeto, ele sempre tem propriedade e valor, value 
 ### Arrays:
 
 - [x] Uma lista que contém qualquer tipo de dado, [..., ]
-- [x] Métodos de array: push, [find, forEach, filter] : HOF (Higher Order Functions)
+- [x] Métodos de array: push, [find, forEach, filter, map] : HOF (Higher Order Functions)
 
 * array é um objeto no JS
 
