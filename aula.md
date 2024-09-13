@@ -93,6 +93,13 @@ const criarMeta - () => {} arrow function, sinal diferente, arrow(seta).
 
 - [x] Importação de módulos (require, Common JS)
 - [x] Biblioteca 'inquirer' para criar prompts interativos
+- [x] fs (file sytem) - módulo nativo
+
+## JSON
+
+- [x] JavaScript Object Notation - Para ter os arquivos (.json)
+- [x] JSON.parse(): transforma de JSON para JS
+- [x] JSON.stringify(): transforma de JS para JSON
 
 ## Programação assícrona e Promises:
 

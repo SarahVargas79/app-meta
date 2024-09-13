@@ -1,16 +1,33 @@
-const { select, input, checkbox } = require('@inquirer/prompts') // Extraindo uma função ou código...
+const { select, input, checkbox } = require('@inquirer/prompts'); // Extraindo uma função ou código...
+const { readFile } = require('fs');
+const { stringify } = require('querystring');
+
+const fs = require("fs").promises
 
 let mensagem = "Boas-vindas ao Fluxo de metas";
 
-let meta = {
-    value: 'Comer ao menos uma fruta diariamante',
-    checked: false,
+let metas
+
+const carregarMetas = async () => {
+    try {
+        /* 
+        readFile - leia o arquivo 
+        utf-8 - tipo de caracter
+        */
+        const dados = await fs.readFile("metas.json", "utf-8")
+        metas = JSON.parse(dados) // JSON - objeto do JS | parse - função que está dentro do JSON, converte (...) para um array
+    } catch (erro) {
+        metas = []
+    }
 }
 
-let metas = [meta]
+const salvarMetas = async () => {
+    // writeFile - escreve no arquivo
+    await fs.writeFile("metas.json", JSON.stringify(metas, null, 2))
+}
 
 const cadastrarMeta = async () => {
-    const meta = await input({ message: "Escreva a meta: " })
+    const meta = await input({ message: "Escreva a meta:" })
 
     /*
         meta - Que for escrito vai ser colocado na meta
@@ -27,6 +44,11 @@ const cadastrarMeta = async () => {
 }
 
 const listarMetas = async () => {
+    if (metas.length == 0) {
+        mensagem = "Não há metas!"
+        return
+    }
+
     const respostas = await checkbox({
         message: " Use as setas para mudar de meta, o espaço para marcar ou desmarcar e o Enter para finalizar a etapa",
         choices: [...metas],
@@ -60,6 +82,11 @@ const listarMetas = async () => {
 }
 
 const metasRealizadas = async () => {
+    if (metas.length == 0) {
+        mensagem = "Não há metas!"
+        return
+    }
+
     const realizadas = metas.filter((meta) => {
         return meta.checked
     })
@@ -76,6 +103,11 @@ const metasRealizadas = async () => {
 }
 
 const metasAbertas = async () => {
+    if (metas.length == 0) {
+        mensagem = "Não há metas!"
+        return
+    }
+
     /*
     se a op. for V a meta esp. entra nas abertas
 
@@ -98,6 +130,10 @@ const metasAbertas = async () => {
 }
 
 const deletarMetas = async () => {
+    if (metas.length == 0) {
+        mensagem = "Não há metas!"
+        return
+    }
 
     // map - Executa a função para cada meta, return o que vai ser modificado. Passa por cada meta devolvendo novo array modificado.
     const metasDesmarcadas = metas.map((meta) => {
@@ -141,6 +177,8 @@ const mostrarMensagem = () => {
 
 // Registra a função, iniciar função, começa a percorrer o while 
 const start = async () => {
+    await carregarMetas()
+
     /*
     await - aguardar, no caso seleção do usuário, para não percorrer tudo de uma vez só
 
@@ -148,6 +186,7 @@ const start = async () => {
     */
     while (true) {
         mostrarMensagem()
+        await salvarMetas()
 
         const opcao = await select({
             message: "Menu >",

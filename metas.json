@@ -1,0 +1,14 @@
+[
+    {
+        "value": "Fazer alongamento todos os dias",
+        "checked": false
+    },
+    {
+        "value": "Começar a estudar 1 hora por dia",
+        "checked": true
+    },
+    {
+        "value": "Terminar tarefas faculdade/pessoais",
+        "checked": false
+    }
+]
